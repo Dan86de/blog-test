@@ -28,7 +28,12 @@ export const Article = defineDocumentType(() => ({
     },
     url: {
       type: "string",
-      resolve: (article) => `http:/localhost:3000/articles/${article._raw.flattenedPath}`,
+      resolve: (article) => {
+        if (process.env.NODE_ENV === "development") {
+          return `http://localhost:3000/articles/${article._raw.flattenedPath}`;
+        }
+        return `https://blog-test-black-zeta.vercel.app/articles/${article._raw.flattenedPath}`;
+      },
     },
   },
 }));

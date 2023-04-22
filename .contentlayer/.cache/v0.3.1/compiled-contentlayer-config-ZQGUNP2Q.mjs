@@ -28,7 +28,12 @@ var Article = defineDocumentType(() => ({
     },
     url: {
       type: "string",
-      resolve: (article) => `http:/localhost:3000/articles/${article._raw.flattenedPath}`
+      resolve: (article) => {
+        if (process.env.NODE_ENV === "development") {
+          return `http://localhost:3000/articles/${article._raw.flattenedPath}`;
+        }
+        return `https://blog-test-black-zeta.vercel.app/articles/${article._raw.flattenedPath}`;
+      }
     }
   }
 }));
@@ -40,4 +45,4 @@ export {
   Article,
   contentlayer_config_default as default
 };
-//# sourceMappingURL=compiled-contentlayer-config-3GDOFNLO.mjs.map
+//# sourceMappingURL=compiled-contentlayer-config-ZQGUNP2Q.mjs.map
