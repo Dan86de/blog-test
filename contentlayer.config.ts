@@ -32,7 +32,7 @@ export const Article = defineDocumentType(() => ({
         if (process.env.NODE_ENV === "development") {
           return `http://localhost:3000/articles/${article._raw.flattenedPath}`;
         }
-        return `https://blog-test-black-zeta.vercel.app/articles/${article._raw.flattenedPath}`;
+        return `https://next-app-routing-blog-mdx-test.vercel.app/articles/${article._raw.flattenedPath}`;
       },
     },
   },
